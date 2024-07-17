@@ -42,7 +42,7 @@ export default function VerifyProof(props) {
           const sig_bytes = Buffer.from(proof.signedClaim.signatures[0], "hex");
 
           const contract = new StellarSDK.Contract(
-            "CA4OZVT36RMBNI5MRDB4724N5LJ4H2FDA633UO2SH37DPLFRBXVBPNVT"
+            process.env.REACT_APP_CONTRACT_ADDRESS
           );
 
           const publicKey = await freighterApi.getPublicKey();
