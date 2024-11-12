@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Reclaim } from "@reclaimprotocol/js-sdk";
+import { transformForOnchain } from "@reclaimprotocol/js-sdk";
 import * as StellarSDK from "@stellar/stellar-sdk";
 import freighterApi from "@stellar/freighter-api";
 import { keccak256 } from "@ethersproject/keccak256";
@@ -19,7 +19,7 @@ export default function VerifyProof(props) {
   const [recId, setRecId] = useState(0);
 
   useEffect(() => {
-    const newProof = Reclaim.transformForOnchain(props.proof);
+    const newProof = transformForOnchain(props.proof);
     setProof(newProof);
   }, []);
 
@@ -79,7 +79,7 @@ export default function VerifyProof(props) {
             networkPassphrase: TESTNET_DETAILS.networkPassphrase,
             accountToSign: publicKey,
           });
-          setVerified(true)
+          setVerified(true);
         }}
       >
         Verify Proof
